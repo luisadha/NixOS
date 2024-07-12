@@ -18,7 +18,7 @@ jobs:
     - env:
         NIXPKGS_ALLOW_UNFREE: 1
       run: |
-        nix build ./#git-secret --impure
+        nix build ./#custom.git --impure
   xdman:
     runs-on: ubuntu-latest
     steps:
