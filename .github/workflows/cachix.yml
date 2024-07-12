@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
 jobs:
-  keypunch:
+  appimage:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
         TEST: 1
         # NIXPKGS_ALLOW_UNFREE: 1
       run: |
-        nix build ./#custom.keypunch --verbose
+        nix build .#custom.keypunch .#custom.bootstrap-studio .#custom.popsql --verbose
   git:
     runs-on: ubuntu-latest
     steps:
