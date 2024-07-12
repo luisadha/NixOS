@@ -18,8 +18,7 @@ jobs:
     - env:
         NIXPKGS_ALLOW_UNFREE: 1
       run: |
-        nix flake update
-        nix build ./#git --impure
+        nix build ./#git-secret --impure
   xdman:
     runs-on: ubuntu-latest
     steps:
@@ -36,5 +35,4 @@ jobs:
         NIXPKGS_ALLOW_UNFREE: 1
       # run: nix-build '<nixpkgs>' --attr mongodb
       run: |
-        nix flake update
         nix build ./#custom.xdman --impure
