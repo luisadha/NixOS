@@ -3,6 +3,20 @@ on:
   pull_request:
   push:
 jobs:
+  mpv:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v25
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - uses: cachix/cachix-action@v14
+      with:
+        name: fmcachix
+        # If you chose API tokens for write access OR if you have a private cache
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - run: nix build .#mpv --verbose
+    - run: nix-collect-garbage -d
   cli:
     runs-on: ubuntu-latest
     steps:
@@ -15,8 +29,8 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-        nix build ./#trunk --verbose
+    - run: nix build ./#trunk ./#ytui-music --verbose
+    - run: nix-collect-garbage -d
   git:
     runs-on: ubuntu-latest
     steps:
@@ -29,5 +43,5 @@ jobs:
         name: fmcachix
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: |
-        nix build ./#custom.git --verbose
+    - run: nix build ./#custom.git --verbose
+    - run: nix-collect-garbage -d
