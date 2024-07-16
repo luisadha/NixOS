@@ -16,16 +16,13 @@ jobs:
         nix_path: nixpkgs=channel:nixos-unstable
         extra_nix_config: |
           extra-experimental-features = nix-command flakes repl-flake auto-allocate-uids configurable-impure-env
+          substituters = https://cache.nixos.org https://cache.nixos.org/ https://devenv.cachix.org https://fmcachix.cachix.org https://nix-community.cachix.org
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= fmcachix.cachix.org-1:Z5j9jk83ctoCK22EWrbQL6AAP3CTYnZ/PHljlYSakrw= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
     # - uses: cachix/cachix-action@v14
     #   with:
     #     name: fmcachix
     #     # If you chose API tokens for write access OR if you have a private cache
     #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - name: add cachix
-      run: |
-        nix profile install nixpkgs#cachix
-        cachix use nix-community
-        cachix use devenv
     - name: build
       run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel
     - run: nix-collect-garbage -d
