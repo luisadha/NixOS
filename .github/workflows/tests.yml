@@ -22,7 +22,7 @@ jobs:
     #     # If you chose API tokens for write access OR if you have a private cache
     #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - name: remove steam
-      run: ./programs/gui/steam.nix
+      run: rm -rf ./programs/gui/steam.nix
     - name: remove container
       run: rm -f ./programs/container.nix
     - name: remove nerdfonts
