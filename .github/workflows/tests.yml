@@ -2,6 +2,8 @@ name: "test"
 on:
   pull_request:
   push:
+permissions:
+  contents: write
 jobs:
   nixos:
     runs-on: ubuntu-latest
@@ -19,19 +21,6 @@ jobs:
     #     name: fmcachix
     #     # If you chose API tokens for write access OR if you have a private cache
     #     authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - name: remove steam
-      run: ./programs/gui/steam.nix
-    - name: remove container
-      run: rm -f ./programs/container.nix
-    - name: remove nerdfonts
-      run: |
-        sed -i '/nerdfonts/d' ./programs/desktop.nix
-    - name: remove some gui and cli
-      run: |
-        sed -i '/keypunch/d;/xdman/d;/appimagekit/d;/qutebrowser/d' ./programs/gui/default.nix
-        sed -i '/popsql/d;/bootstrap-studio/d;/google-chrome/d;/zig/d;/deno/d;/rustup/d;/dbeaver/d;/zoom-us/d;/kdenlive/d;/bun/d;/rustup/d;/zotero-beta/d;/telegram-desktop/d;/youtube-music/d;/libreoffice/d;/anytype/d;/obs-studio/d;' ./users/fmway.nix
-        sed -i '/ytui-music/d;/nixpacks/d;/nil/d;/wrangler/d;/nixd/d;/ttyper/d;' ./home-manager/fmway/packages.nix
-        rm -f ./programs/gui/firefox.nix
     - name: Build
       run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel
     - run: nix-collect-garbage -d
