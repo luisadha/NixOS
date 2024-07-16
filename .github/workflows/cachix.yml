@@ -47,4 +47,3 @@ jobs:
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: nix build .#custom.git --verbose
     - run: nix-collect-garbage -d
-    - run: cat /etc/os-release
