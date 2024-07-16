@@ -1,11 +1,7 @@
 name: "test"
 on:
-  # Only trigger, when the build workflow succeeded
-  workflow_run:
-    workflows:
-      - cachix
-    types:
-      - completed
+  pull_request:
+  push:
 jobs:
   nixos:
     runs-on: ubuntu-latest
@@ -33,9 +29,9 @@ jobs:
     - name: remove some gui and cli
       run: |
         sed -i '/keypunch/d;/xdman/d;/appimagekit/d;/qutebrowser/d' ./programs/gui/default.nix
-        sed -i '/popsql/d;/bootstrap-studio/d;/google-chrome/d;/zig/d;/deno/d;/rustup/d;/dbeaver/d;/zoom-us/d;/kdenlive/d;/bun/d;/rustup/d;/zotero-beta/d;/telegram-desktop/d;/youtube-music/d;/libreoffice/d;/anytype/d;/obs-studio/d;'
+        sed -i '/popsql/d;/bootstrap-studio/d;/google-chrome/d;/zig/d;/deno/d;/rustup/d;/dbeaver/d;/zoom-us/d;/kdenlive/d;/bun/d;/rustup/d;/zotero-beta/d;/telegram-desktop/d;/youtube-music/d;/libreoffice/d;/anytype/d;/obs-studio/d;' ./users/fmway.nix
+        sed -i '/ytui-music/d;/nixpacks/d;/nil/d;/wrangler/d;/nixd/d;/ttyper/d;' ./home-manager/fmway/packages.nix
         rm -f ./programs/gui/firefox.nix
     - name: Build
-    - name: build
       run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel
     - run: nix-collect-garbage -d
