@@ -35,5 +35,5 @@ jobs:
         sed -i '/ytui-music/d;/nixpacks/d;/nil/d;/wrangler/d;/nixd/d;/ttyper/d;' ./home-manager/fmway/home/packages.nix
         rm -f ./programs/gui/firefox.nix
     - name: Build
-      run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel
+      run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel --verbose
     - run: nix-collect-garbage -d
