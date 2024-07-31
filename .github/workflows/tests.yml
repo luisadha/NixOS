@@ -35,4 +35,6 @@ jobs:
         rm -f ./programs/gui/firefox.nix
     - name: Build
       run: nix build .#nixosConfigurations.Namaku1801.config.system.build.toplevel --verbose
+    - name: Info
+      run: nix path-info -Sh ./result
     - run: nix-collect-garbage -d
