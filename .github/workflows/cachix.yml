@@ -30,7 +30,7 @@ jobs:
         # If you chose API tokens for write access OR if you have a private cache
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
     - run: |
-      nix build github:henriquekirchheck/nh/extra-privilege-elevation --verbose
+        nix build github:henriquekirchheck/nh/extra-privilege-elevation --verbose
     - run: nix-collect-garbage -d
   mpv:
     runs-on: ubuntu-latest
