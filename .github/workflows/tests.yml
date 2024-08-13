@@ -25,9 +25,6 @@ jobs:
       run: rm -rf ./programs/gui/steam.nix
     - name: remove container
       run: rm -f ./programs/container.nix
-    - name: remove nerdfonts
-      run: |
-        sed -i '/nerdfonts/d' ./systems/fonts.nix
     - name: remove some gui and cli
       run: |
         sed -i '/keypunch/d;/xdman/d;/appimagekit/d;/vscode/d;/xdman/d;/firefoxpwa/d;/zed-editor/d;/keepassxc/d;/wezterm/d;/qutebrowser/d;/youtube-music/d;/popsicle/d;/protonmail/d;' ./programs/gui/default.nix
