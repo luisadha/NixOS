@@ -9,6 +9,7 @@
 
   # Enable networking
   networkmanager.enable = true;
+  networkmanager.wifi.powersave = true;
 
   # /etc/hosts
   hosts = {
@@ -18,6 +19,7 @@
       "gitea.local"
       "cgi.local.com"
       "nyoba.com"
+      "hydra.local"
       # "download.mikrotik.com"
     ];
   };
