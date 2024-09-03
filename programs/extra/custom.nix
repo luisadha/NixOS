@@ -1,4 +1,4 @@
-{ super, self, ... }:
+{ super, lib, self, ... }:
 {
   git = super.git.override { withLibsecret = true; };
   obs-studio = self.wrapOBS {
@@ -8,4 +8,7 @@
       obs-pipewire-audio-capture
     ];
   };
+  swayfx = (self.swayfx-unwrapped.override {
+    trayEnabled = false;
+  });
 }
