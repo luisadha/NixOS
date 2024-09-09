@@ -1,7 +1,7 @@
 # NixOS configuration
 This is configuration nix in android (nix-on-droid)
 
-# How To Use?
+## How To Use?
 - Install [nix-on-droid](https://f-droid.org/packages/com.termux.nix)
 - Open the app, (you also have to enable flake) 
 - Remove default configuration
