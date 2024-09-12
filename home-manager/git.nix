@@ -2,8 +2,8 @@
 { programs.git = {
 
   enable = true;
-  userName = "fmway"; # change to your username
-  userEmail = "fm18lv@gmail.com"; # change to your email
+  userName = "luisadha"; # change to your username
+  userEmail = "adharudin14@gmail.com"; # change to your email
 
   # delta.enable = true; # enable git diff with delta
   # difftastic.enable = true; # git diff with difftastic
